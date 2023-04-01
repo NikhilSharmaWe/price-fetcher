@@ -13,6 +13,7 @@ type PriceFetcher interface {
 // priceFetcher implements the PriceFetcher interface.
 type priceFetcher struct{}
 
+// this is the business logic
 func (s *priceFetcher) FetchPrice(ctx context.Context, ticker string) (float64, error) {
 	// Anthony is teaching structuring the microservices, therefore he has not written the business logic here
 	// getting the actual price for tickers, he is just returning results from the map var declared

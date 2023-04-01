@@ -32,7 +32,7 @@ func (s *JSONAPIServer) Run() {
 
 func makeHTTPHandleFunc(apiFunc APIFunc) http.HandlerFunc {
 	ctx := context.Background()
-	ctx = context.WithValue(ctx, "requestID", rand.Intn(10000000))
+	ctx = context.WithValue(ctx, "requestID", rand.Intn(10000000)) // can use uuid instead here
 	return func(w http.ResponseWriter, r *http.Request) {
 		if err := apiFunc(ctx, w, r); err != nil {
 			writeJSON(w, http.StatusBadRequest, map[string]any{"error": err.Error()})
